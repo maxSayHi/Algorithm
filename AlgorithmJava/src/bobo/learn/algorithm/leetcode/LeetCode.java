@@ -16,6 +16,12 @@ public class LeetCode {
         System.out.println(ints[0] + "  " + ints[1]);
     }
 
+    /**
+     * 可以使用HashTble或者是HashSet
+     * @param nums
+     * @param target
+     * @return
+     */
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         if (nums.length == 0) {
