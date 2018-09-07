@@ -1,5 +1,7 @@
 package bobo.learn.algorithm.leetcode;
 
+import org.junit.Test;
+
 /**
  * Created by han on 18-9-5.
  *
@@ -19,20 +21,37 @@ package bobo.learn.algorithm.leetcode;
  0 <= A[i], B[i] < 100
 
 
+ 真心没想到，第一道动态规划的题目，一次通过，上道儿喽！！！！！！！
  */
 public class LongestOfSubArray {
+
+    @Test
+    public void testSubArray(){
+        int A[]=new int[]{1,2,3,2,1};
+        int B[]=new int[]{3,2,1,4,7};
+        System.out.println(findLength(A,B));
+    }
+
     public int findLength(int[] A, int[] B) {
+        int longest=0;
         int cells[][]=new int[A.length][B.length];
         for(int i=0;i<A.length;i++){
             for(int j=0;j<B.length;j++){
-
                 if(A[i]==B[j]){
-                    cells[i][j]=cells[i-1][j-1];
+                    if(i==0||j==0){
+                        cells[i][j]=1;
+                    }else {
+                        cells[i][j]=cells[i-1][j-1]+1;
+                    }
+                    longest=Math.max(cells[i][j],longest);
+                }else {
+                    cells[i][j]=0;
                 }
 
-
+                System.out.print(cells[i][j]+" ");
             }
+            System.out.println();
         }
-        return 0;
+        return longest;
     }
 }

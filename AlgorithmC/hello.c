@@ -5,6 +5,41 @@
 #define UPPER 300
 #define STEP 20
 
+/**
+ * 
+ * Exercise 1-9. Write a program to copy its input to its output, replacing each string of one or more blanks
+by a single blank.
+ * */
+void copyIO(){
+    int c;
+    int last=0;
+    while((c=getchar())!=EOF){
+        if((' '==c)&&(' '==last)){
+        }else{
+            printf("%c",c);
+        } 
+        } 
+        last=c;
+    }
+}
+
+/**
+ * Exercise 1-8. Write a program to count blanks, tabs, and newlines.
+ * 
+ * */
+void countBTN(){
+    int c,blanks,tabs,nl;
+    blanks=tabs=nl=0;
+    while((c=getchar())!=EOF){
+        if(' '==c)
+            blanks++;
+        else if('\n'==c)
+            nl++;
+        else if('\t'==c)
+            tabs++;
+    }
+    printf("\nblanks %d  tabs %d newlines %d",blanks,tabs,nl);
+}
 
 /**
  * Exercsise 1-6. Verify that the expression getchar() != EOF is 0 or 1.
@@ -74,5 +109,8 @@ void main(){
     // tempConvertion();
     // tempConvertionC2F();
     // tempConvertionReverse();
-    testEOF();
+    // tempConvertionReverse();
+    // testEOF();
+    // countBTN();
+    copyIO();
 }
