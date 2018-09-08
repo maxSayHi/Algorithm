@@ -146,7 +146,7 @@ public class LeetCode {
 
     @Test
     public void testFindMedianSortedArrays() {
-        System.out.println(findMedianSortedArrays(new int[]{1, 3}, new int[]{2, 4}));
+        System.out.println(findMedianSortedArrays(new int[]{1, 3,4}, new int[]{2}));
     }
 
     public double findMedianSortedArraysSlow(int[] nums1, int[] nums2) {
@@ -178,6 +178,30 @@ public class LeetCode {
         }
     }
 
+    public double findKth(int a[], int astart, int b[], int bstart, int k) {
+
+        if (astart >= a.length) {
+            return b[bstart + k - 1];
+        }
+        if (bstart >= b.length) {
+            return a[astart + k - 1];
+        }
+
+        if (k == 1) {
+            return Math.min(a[astart], b[bstart]);
+        }
+
+        int aKey = astart + k / 2 - 1 < a.length ? a[astart + k / 2 - 1] : Integer.MAX_VALUE;
+        int bKey = bstart + k / 2 - 1 < b.length ? b[bstart + k / 2 - 1] : Integer.MAX_VALUE;
+
+        if (aKey < bKey) {
+            return findKth(a, astart + k / 2, b, bstart, k - k / 2);
+        } else {
+            return findKth(a, astart, b, bstart + k / 2, k - k / 2);
+        }
+    }
+
+
     // k = (m+n)/2   a[k/2-1]<b[k/2-1]  如果a融合到b中   a[0] 到 a[k/2-1 ] 都是小于融合后第k小元素的值
     public double findKthLearn(int a[], int astart, int b[], int bstart, int k) {
 
@@ -200,29 +224,6 @@ public class LeetCode {
             return findKthLearn(a, astart + k / 2, b, bstart, k - k / 2);
         } else {
             return findKthLearn(a, astart, b, bstart + k / 2, k - k / 2);
-        }
-    }
-
-    public double findKth(int a[], int astart, int b[], int bstart, int k) {
-
-        if (astart >= a.length) {
-            return b[bstart + k - 1];
-        }
-        if (bstart >= b.length) {
-            return a[astart + k - 1];
-        }
-
-        if (k == 1) {
-            return Math.min(a[astart], b[bstart]);
-        }
-
-        int aKey = astart + k / 2 - 1 < a.length ? a[astart + k / 2 - 1] : Integer.MAX_VALUE;
-        int bKey = bstart + k / 2 - 1 < b.length ? b[bstart + k / 2 - 1] : Integer.MAX_VALUE;
-
-        if (aKey < bKey) {
-            return findKth(a, astart + k / 2, b, bstart, k - k / 2);
-        } else {
-            return findKth(a, astart, b, bstart + k / 2, k - k / 2);
         }
     }
 
