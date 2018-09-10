@@ -8,8 +8,36 @@
 #define OUT 0
 #define IN 1
 
-/**Exercise 1-13. Write a program to print a histogram of the lengths of words in its input. It is easy to
-draw the histogram with the bars horizontal; a vertical orientation is more challenging.**/
+/**Exercise 1-17. Write a program to print all input lines that are longer than 80 characters.**/
+void pinrtInput(){
+    int line[1000];
+    int c=0,len=0,cursor=0;
+    while((c=getchar())!=EOF){
+        if(c!='\n'){
+            len++;
+            line[cursor++]=c;
+        }else if(c=='\n'){
+            line[cursor++]=c;
+        
+            if(len>8){
+                int start=0;
+                while(start<len){
+                    printf("%d",line[len]);
+                }              
+            }
+            len=0;
+            cursor=0;
+        }
+    }
+}
+
+
+/**Exercise 1-16. Revise the main routine of the longest-line program so it will correctly print the length of
+arbitrary long input lines, and as much as possible of the text.**/
+
+
+/**Exercise 1-14. Write a program to print a histogram of the frequencies of different characters in its
+input.**/
 void histogram(){
     int charset[128]={0};
     // for(int i=0;i<128;i++){
@@ -23,16 +51,62 @@ void histogram(){
         }
     }
 
+    printf("\n");
     // int gram[longest][127]={0};
-    for(int i=longest-1;i>=0;i--){
-        for(int j=0;j<127;j++){
-            if(i<charset[j]){
+    int i=0,j=0;
+    for(i=longest-1;i>=-1;i--){
+        for(j=97;j<128;j++){
+            if(i==-1){
+                printf("%c",j);
+            }else if(i<charset[j]){
                 printf("*");
             }else{
                 printf(" ");
             }
             // gram[i][j]=0;
         }
+        printf("\n");
+    }
+    for(i=0;i<128;i++){
+        printf("%c",i);
+    }
+
+    printf("%d",'a');
+}
+
+/**Exercise 1-13. Write a program to print a histogram of the lengths of words in its input. It is easy to
+draw the histogram with the bars horizontal; a vertical orientation is more challenging.**/
+void histogramWords(){
+    int c=0,status=OUT,len=0;
+    while((c=getchar())){
+
+        if(c==EOF){
+            while(len>0){
+                printf("*");
+                len--;
+            }
+            break;
+        }
+
+        if(' '==c||'\t'==c){
+            status=OUT;
+        }else if(status==OUT){
+            status=IN;
+
+            while(len>0){
+                printf("*");
+                len--;
+            }
+            printf("\n");
+
+            len=1;
+            printf("%c",c);
+
+        }else{
+            len++;
+            printf("%c",c);
+        }
+
     }
 
 }
@@ -184,5 +258,7 @@ void main(){
     // copyIO();
     // showTab();
     // wordPerLine();
-    histogram();
+    // histogram();
+    // histogramWords();
+    pinrtInput();
 }
