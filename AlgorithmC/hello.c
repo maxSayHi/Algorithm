@@ -5,6 +5,76 @@
 #define UPPER 300
 #define STEP 20
 
+#define OUT 0
+#define IN 1
+
+/**Exercise 1-13. Write a program to print a histogram of the lengths of words in its input. It is easy to
+draw the histogram with the bars horizontal; a vertical orientation is more challenging.**/
+void histogram(){
+    int charset[128]={0};
+    // for(int i=0;i<128;i++){
+    //     printf("%d",charset[i]);
+    // }
+    int c,longest=0;
+    while((c=getchar())!=EOF){
+        charset[c]++;
+        if(charset[c]>longest){
+            longest=charset[c];
+        }
+    }
+
+    // int gram[longest][127]={0};
+    for(int i=longest-1;i>=0;i--){
+        for(int j=0;j<127;j++){
+            if(i<charset[j]){
+                printf("*");
+            }else{
+                printf(" ");
+            }
+            // gram[i][j]=0;
+        }
+    }
+
+}
+
+/**Exercise 1-12. Write a program that prints its input one word per line.**/
+void wordPerLine(){
+    int c,status=OUT;
+    while((c=getchar())!=EOF){
+        if(' '==c||'\t'==c){
+            status=OUT;
+        }else if(status==OUT){
+            status=IN;
+            printf("\n");
+            printf("%c",c);
+        }else{
+            printf("%c",c);
+        }
+        
+    }
+}
+
+/**Exercise 1-11. How would you test the word count program? What kinds of input are most likely to
+uncover bugs if there are any?**/
+
+
+/**
+ * Exercise 1-10. Write a program to copy its input to its output, replacing each tab by \t , each backspace
+by \b , and each backslash by \\ . This makes tabs and backspaces visible in an unambiguous way.
+**/
+void showTab(){
+    int c;
+    while((c=getchar())!=EOF){
+        if('\t'==c){
+            printf("\\t");
+        }else if(' '==c){
+            printf("\\b");
+        }else{
+            printf("%c",c);
+        }
+    }
+}
+
 /**
  * 
  * Exercise 1-9. Write a program to copy its input to its output, replacing each string of one or more blanks
@@ -17,7 +87,6 @@ void copyIO(){
         if((' '==c)&&(' '==last)){
         }else{
             printf("%c",c);
-        } 
         } 
         last=c;
     }
@@ -112,5 +181,8 @@ void main(){
     // tempConvertionReverse();
     // testEOF();
     // countBTN();
-    copyIO();
+    // copyIO();
+    // showTab();
+    // wordPerLine();
+    histogram();
 }
