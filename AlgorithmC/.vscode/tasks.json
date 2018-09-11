@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "gcc",
             "args": [
-                "hello.c", "-o","hello.out","&&","./hello.out"
+                "hello.c", "-o","hello.out","-g","&&","./hello.out"
             ],
             "group": {
                 "kind": "build",

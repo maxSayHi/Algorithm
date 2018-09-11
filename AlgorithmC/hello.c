@@ -1,6 +1,5 @@
 #include<stdio.h>
 
-
 #define LOWER 0
 #define UPPER 300
 #define STEP 20
@@ -8,24 +7,94 @@
 #define OUT 0
 #define IN 1
 
-/**Exercise 1-17. Write a program to print all input lines that are longer than 80 characters.**/
-void pinrtInput(){
+
+
+/**Exercise 1-19. Write a function reverse(s) that reverses the character string s . Use it to write a
+program that reverses its input a line at a time.**/
+void pinrtInputReverse(){
     int line[1000];
-    int c=0,len=0,cursor=0;
+    int c=0,cursor=0;
     while((c=getchar())!=EOF){
         if(c!='\n'){
-            len++;
             line[cursor++]=c;
         }else if(c=='\n'){
             line[cursor++]=c;
         
-            if(len>8){
-                int start=0;
-                while(start<len){
-                    printf("%d",line[len]);
-                }              
+            while(cursor>=0){
+                printf("%c",line[cursor]);
+                cursor--;
+            }   
+            cursor=0;
+        }
+    }
+}
+
+/**Exercise 1-18. Write a program to remove trailing blanks and tabs from each line of input, and to delete
+entirely blank lines.
+abcdefg    \n\n\n
+
+idea:just find from end to start,if get sth not blank or newline,then print things out from start to end
+**/
+void pinrtInputRmBlank(){
+    int line[1000];
+    int c=0,cursor=0;
+    while((c=getchar())!=EOF){
+        if(c!='\n'){
+            line[cursor++]=c;
+        }else if(c=='\n'){
+            line[cursor]=c;
+
+            int last=0,status=OUT;
+            while(cursor>=0){
+
+                if((line[cursor]!=' ')&&(line[cursor]!='\n')){
+                    status=IN;
+                    break;
+                }
+
+                // if((' '==line[cursor])&&status==OUT){
+                    
+                // }else if(('\n'==line[cursor])&&('\n'==last)){
+                    
+                // }else if(status==OUT){
+                    
+                // }else{
+                    
+                // }
+
+                last=line[cursor];
+                cursor--;
             }
-            len=0;
+            int start=0;
+            while(start<=cursor){
+                printf("%c",line[start]);
+                start++;
+            }
+            cursor=0;
+            last=0;
+            status=OUT;
+        }
+    }
+}
+
+/**Exercise 1-17. Write a program to print all input lines that are longer than 80 characters.**/
+void pinrtInput80(){
+    int line[1000];
+    int c=0,cursor=0;
+    while((c=getchar())!=EOF){
+        if(c!='\n'){
+            line[cursor++]=c;
+        }else if(c=='\n'){
+            line[cursor++]=c;
+            
+            if(cursor>8){
+                int start=0;
+                while(start<=cursor){
+                    printf("%c",line[start]);
+                    start++;
+                } 
+            }
+              
             cursor=0;
         }
     }
@@ -37,7 +106,9 @@ arbitrary long input lines, and as much as possible of the text.**/
 
 
 /**Exercise 1-14. Write a program to print a histogram of the frequencies of different characters in its
-input.**/
+input.
+idea: characters are no more than 128, this is important! Keep a Grid in mind.
+**/
 void histogram(){
     int charset[128]={0};
     // for(int i=0;i<128;i++){
@@ -260,5 +331,7 @@ void main(){
     // wordPerLine();
     // histogram();
     // histogramWords();
-    pinrtInput();
+    // pinrtInput();
+    // pinrtInput80();
+    pinrtInputRmBlank();
 }
