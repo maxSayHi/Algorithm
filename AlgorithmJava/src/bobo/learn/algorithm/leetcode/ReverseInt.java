@@ -2,8 +2,6 @@ package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 /**
  * Given a 32-bit signed integer, reverse digits of an integer.
 
@@ -30,7 +28,7 @@ public class ReverseInt {
 //        System.out.println(2<<30-1);
         System.out.println(Integer.MAX_VALUE);
         System.out.println(Integer.MIN_VALUE);
-        System.out.println(reverse(2<<30-2));
+        System.out.println(reverse(123456));
 //        System.out.println(reverse(999996));
     }
 
@@ -42,19 +40,18 @@ public class ReverseInt {
 
         int reverse=0;
         while(x!=0){
-//            list.add(x%10);
-            reverse*=10;
-            reverse+=x%10;
-
             //比较最后两位数
             if(reverse>Integer.MAX_VALUE/10||(reverse==Integer.MAX_VALUE/10&&x%10>7)){
                 return 0;
             }
 
-            if(reverse<Integer.MIN_VALUE/10||(reverse==Integer.MAX_VALUE/10&&x%10<-8)){
+            if(reverse<Integer.MIN_VALUE/10||(reverse==Integer.MIN_VALUE/10&&x%10<-8)){
                 return 0;
             }
 
+//            list.add(x%10);
+            reverse*=10;
+            reverse+=x%10;
             x=x/10;
 
         }
