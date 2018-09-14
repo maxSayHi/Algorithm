@@ -7,7 +7,29 @@
 #define OUT 0
 #define IN 1
 
+#define TS 4
 
+/**Exercise 1-20. Write a program detab that replaces tabs in the input with the proper number of blanks
+to space to the next tab stop. Assume a fixed set of tab stops, say every n columns. Should n be a
+to space to the next tab stop. Assume a fixed set of tab stops, say every n columns. Should n be a
+variable or a symbolic parameter?**/
+void detab(){
+    // printf("a\taa\taaa\ta");
+    // printf("%d",TS-1%TS);
+    int c,index=0;
+    while((c=getchar())!=EOF){
+        int left = TS-index%TS;
+        if(c=='\t'&&left!=0){
+            while(left>0){
+                printf(" ");
+                left--;
+            }
+        }else{
+            printf("%c",c);
+        }
+        index++;
+    }
+}
 
 /**Exercise 1-19. Write a function reverse(s) that reverses the character string s . Use it to write a
 program that reverses its input a line at a time.**/
@@ -333,5 +355,6 @@ void main(){
     // histogramWords();
     // pinrtInput();
     // pinrtInput80();
-    pinrtInputRmBlank();
+    // pinrtInputRmBlank();
+    detab();
 }
