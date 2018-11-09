@@ -24,6 +24,23 @@ void getRange(){
     printf("size of %d\n",sizeof(int));
     printf("size of %d\n",sizeof(double));
 }
+
+/**
+ * Exercise 2-4. Write an alternative version of squeeze(s1,s2) that deletes each character in s1 that
+matches any character in the string s2 .
+ */
+void squeeze(){
+
+}
+
+/**
+ * Exercise 2-3. Write a function htoi(s) , which converts a string of hexadecimal digits (including an
+optional 0x or 0X ) into its equivalent integer value. The allowable digits are 0 through 9 , a through f ,
+and A through F */
+void htoi(char s[]){
+    
+}
+
 /*
 Exercise 2-2. Write a loop equivalent to the for loop above without using && or || .
 for (i=0; i < lim-1 && (c=getchar()) != '\n' && c != EOF; ++i)
@@ -40,10 +57,8 @@ for (i=0;; ++i){
     }
     s[i] = c;
 }
-
 */
 void changeCode(){
-
 }
 
 void main(){
