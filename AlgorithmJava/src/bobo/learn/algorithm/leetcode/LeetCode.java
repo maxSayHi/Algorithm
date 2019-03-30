@@ -1,8 +1,10 @@
 package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
-
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 /**
  * Created by max on 16-10-12.
@@ -367,4 +369,171 @@ public class LeetCode {
         return length;
     }
 
+
+    /**
+     * testcase: 2147395599
+     */
+    @Test
+    public void testSqrt(){
+        System.out.println(sqrt(2147395599));
+    }
+
+    /**
+     *
+     * mplement int sqrt(int x).
+     *
+     * Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+     *
+     * Since the return type is an integer, the decimal digits are truncated and only the integer part of the result is returned.
+     *
+     * Example 1:
+     *
+     * Input: 4
+     * Output: 2
+     *
+     * Example 2:
+     *
+     * Input: 8
+     * Output: 2
+     * Explanation: The square root of 8 is 2.82842..., and since
+     *              the decimal part is truncated, 2 is returned.
+     *
+     * 注意，因为计算过程涉及到平方运算，为了防止int的最大值出现，所以使用long类型保存中间类型
+     *
+     * */
+
+    public int sqrt(int num){
+        long mid;
+        long lo=0,hi=num;
+        while (lo<=hi){
+            mid=lo+(hi-lo)/2;
+            if(mid*mid==num){
+                return (int)mid;
+            }else if(mid*mid>num){
+                long next=(int)mid-1;
+                if(next*next<num)
+                    return (int)next;
+                hi=next;
+            }else {
+                int next=(int)mid+1;
+//                if(next*next>num)   不需要这个操作，因为题目要求
+//                    return next;
+                lo=next;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     *Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+     *
+     * Example:
+     *
+     * Input:
+     * [
+     *   1->4->5,
+     *   1->3->4,
+     *   2->6
+     * ]
+     * Output: 1->1->2->3->4->4->5->6
+     */
+
+    @Test
+    public void mergeKLists(){
+        ListNode[] lists=new ListNode[3];
+        ListNode node0 = new ListNode(1);
+        node0.next=new ListNode(2);
+
+        ListNode node1 = new ListNode(6);
+        node1.next=new ListNode(9);
+
+        ListNode node2 = new ListNode(3);
+        node2.next=new ListNode(8);
+
+        lists[0]=node0;
+        lists[1]=node1;
+        lists[2]=node2;
+
+        ListNode node = mergeKLists(lists);
+        while(node!=null){
+            System.out.println(node.val);
+            node=node.next;
+        }
+    }
+
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<Integer> q = new PriorityQueue<>();
+        for(int i=0;i<lists.length;i++){
+            ListNode node = lists[i];
+            while(node!=null){
+                q.add(node.val);
+                node=node.next;
+            }
+        }
+
+        ListNode node=null,head=null;
+        while (q.size()!=0){
+            if(node==null){
+                node=new ListNode(q.poll());
+                head=node;
+            }else {
+                node.next=new ListNode(q.poll());
+                node=node.next;
+            }
+        }
+        return head;
+    }
+
+
+    /**
+     * Given a linked list, determine if it has a cycle in it.
+     *
+     * To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: head = [3,2,0,-4], pos = 1
+     * Output: true
+     * Explanation: There is a cycle in the linked list, where tail connects to the second node.
+     *
+     *
+     * Example 2:
+     *
+     * Input: head = [1,2], pos = 0
+     * Output: true
+     * Explanation: There is a cycle in the linked list, where tail connects to the first node.
+     *
+     *
+     * Example 3:
+     *
+     * Input: head = [1], pos = -1
+     * Output: false
+     * Explanation: There is no cycle in the linked list.
+     */
+    @Test
+    public void testCycle(){
+        ListNode node0 = new ListNode(1);
+        node0.next=new ListNode(2);
+        node0.next.next=new ListNode(1);
+        node0.next.next.next=node0.next;
+        System.out.println(hasCycle(node0));
+    }
+
+    public boolean hasCycle(ListNode head) {
+        ListNode node=head;
+        int pos=999;
+        HashSet<Integer> set = new HashSet<>();
+        while(node!=null){
+            if(set.contains(node.val)){
+                return true;
+            }
+            set.add(node.val+pos);
+            pos+=999;
+            node=node.next;
+        }
+
+        return false;
+    }
 }
