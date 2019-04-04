@@ -66,7 +66,7 @@ public class InvertTree {
                 nodes.add(poll.right);
             }
         }
-//        Iterator<TreeNode> iterator = nodes.iterator();
+//        Iterator<ListNode> iterator = nodes.iterator();
 //        while(iterator.hasNext()){
 //            System.out.println(iterator.next().val);
 //        }

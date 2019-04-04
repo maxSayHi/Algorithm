@@ -1,7 +1,6 @@
 package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Collections;
 

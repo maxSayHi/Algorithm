@@ -1,10 +1,8 @@
 package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
+
+import java.util.*;
 
 /**
  * Created by max on 16-10-12.
@@ -400,6 +398,8 @@ public class LeetCode {
      *
      * 注意，因为计算过程涉及到平方运算，为了防止int的最大值出现，所以使用long类型保存中间类型
      *
+     * 二分查找
+     *
      * */
 
     public int sqrt(int num){
@@ -511,6 +511,8 @@ public class LeetCode {
      * Input: head = [1], pos = -1
      * Output: false
      * Explanation: There is no cycle in the linked list.
+     *
+     * 核心思想:快慢指针
      */
     @Test
     public void testCycle(){
@@ -522,18 +524,276 @@ public class LeetCode {
     }
 
     public boolean hasCycle(ListNode head) {
-        ListNode node=head;
-        int pos=999;
-        HashSet<Integer> set = new HashSet<>();
-        while(node!=null){
-            if(set.contains(node.val)){
+        ListNode slow=head,fast=head;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
                 return true;
             }
-            set.add(node.val+pos);
-            pos+=999;
-            node=node.next;
         }
 
         return false;
+    }
+
+
+    /**
+     * 贪心、动态规划
+     */
+
+    /**
+     * Say you have an array for which the ith element is the price of a given stock on day i.
+     *
+     * If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+     *
+     * Note that you cannot sell a stock before you buy one.
+     *
+     * Example 1:
+     *
+     * Input: [7,1,5,3,6,4]
+     * Output: 5
+     * Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+     *              Not 7-1 = 6, as selling price needs to be larger than buying price.
+     *
+     * Example 2:
+     *
+     * Input: [7,6,4,3,1]
+     * Output: 0
+     * Explanation: In this case, no transaction is done, i.e. max profit = 0.
+     *
+     *
+     * 关键点：单向，不能往回走
+     */
+
+    @Test
+    public void testProfit(){
+        int prices[]={7,1,5,3,6,4};
+//        int prices[]={4};
+        System.out.println(maxProfitOnepass(prices));
+    }
+
+
+    //BruteForce
+    public int maxProfit(int[] prices) {
+        int len=prices.length;
+        if(len<2)
+            return 0;
+//        int table[][]=new int[len][len];
+        int max=0;
+        for(int i=0;i<len-1;i++){//第i天买
+            for(int j=i+1;j<len;j++){//第j天卖
+                int profit=prices[j]-prices[i];
+                if(profit>max)
+                    max=profit;
+//                if(i>0){
+//                    if(profit<table[i-1][j]){
+//                        profit=table[i-1][j];
+//                    }
+//                }
+//                if(profit>table[i][j-1]){
+//                    table[i][j]=profit;
+//                }else {
+//                    table[i][j]=table[i][j-1];
+//                }
+
+            }
+        }
+
+        return max;
+//        return table[len-2][len-1];
+
+    }
+
+    public int maxProfitOnepass(int[] prices) {
+        int min=Integer.MAX_VALUE;
+        int max=0;
+        for(int i=0;i<prices.length;i++){
+            if(prices[i]<min){
+                min=prices[i];
+            }else if(prices[i]-min>max){
+                max=prices[i]-min;
+            }
+        }
+        return max;
+    }
+
+
+    /**
+     *
+     * 322. Coin Change
+     * You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+     *
+     * Example 1:
+     *
+     * Input: coins = [1, 2, 5], amount = 11
+     * Output: 3
+     * Explanation: 11 = 5 + 5 + 1
+     *
+     * Example 2:
+     *
+     * Input: coins = [2], amount = 3
+     * Output: -1
+     *
+     * 必须动手画，找状态转移方程
+     *
+     */
+    @Test
+    public void testCoin(){
+        int coins[] = {1,2,5};
+        System.out.println(coinChange(coins,10));
+    }
+
+    public int coinChange(int[] coins, int amount) {
+        int table[][] =new int[coins.length][amount+1];
+
+        if(coins.length<1){
+            return -1;
+        }
+
+        if(coins.length<2){
+            if(amount%coins[0]==0){
+                return amount/coins[0];
+            }
+        }
+
+        for(int i=0;i<coins.length;i++){
+            for(int j=0;j<=amount;j++){
+                table[i][j]=amount+1;
+            }
+        }
+
+        for(int j=0;j<=amount;j++){
+            if(j%coins[0]==0){
+                table[0][j]=j/coins[0];
+            }
+            System.out.print(table[0][j]+" ");
+        }
+
+        System.out.println();
+        for(int i=1;i<coins.length;i++){
+            for(int j=0;j<=amount;j++){
+                if(j-coins[i]>=0){
+                    table[i][j]=Math.min(table[i-1][j],table[i][j-coins[i]]+1);//核心部分
+                }else{
+                    table[i][j]=table[i-1][j];
+                }
+                System.out.print(table[i][j]+" ");
+
+            }
+            System.out.println();
+
+        }
+
+        return table[coins.length-1][amount]==amount+1?-1:table[coins.length-1][amount];
+    }
+
+    public int coinChangeAC(int[] coins, int amount) {
+        int max = amount + 1;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, max);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if (coins[j] <= i) {
+                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                }
+            }
+        }
+        return dp[amount] > amount ? -1 : dp[amount];
+    }
+
+
+    /**
+     * 169. Majority Element
+     * Easy
+     *
+     * Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+     *
+     * You may assume that the array is non-empty and the majority element always exist in the array.
+     *
+     * Example 1:
+     *
+     * Input: [3,2,3]
+     * Output: 3
+     *
+     * Example 2:
+     *
+     * Input: [2,2,1,1,1,2,2]
+     * Output: 2
+     *
+     */
+    @Test
+    public void testMajority(){
+        int nums[]={2,1,2,2,2,2,1,2,3,3,3,1,1,2,2};
+        System.out.println(majorityElement(nums));
+    }
+
+    public int majorityElement(int[] nums) {
+        if(nums.length==1){
+            return nums[0];
+        }
+        int half=nums.length/2;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int num=nums[i];
+            Integer val = map.get(num);
+            if(val==null){
+                map.put(num,1);
+            }else {
+                map.put(num,++val);
+                if(val>half){
+                    return num;
+                }
+            }
+
+//            Integer peek = queue.peek();
+
+        }
+        return 0;
+    }
+
+    /**
+     * Invert a binary tree.
+     *
+     * Example:
+     *
+     * Input:
+     *
+     *      4
+     *    /   \
+     *   2     7
+     *  / \   / \
+     * 1   3 6   9
+     *
+     * Output:
+     *
+     *      4
+     *    /   \
+     *   7     2
+     *  / \   / \
+     * 9   6 3   1
+     *
+     * Trivia:
+     * This problem was inspired by this original tweet by Max Howell:
+     *
+     *     Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so f*** off.
+     */
+
+    public class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
+    }
+
+    public TreeNode invertTree(TreeNode root) {
+        if(root==null){
+            return null;
+        }
+
+        TreeNode temp=invertTree(root.left);
+        root.left=invertTree(root.right);
+        root.right=temp;
+        return root;
     }
 }
