@@ -9,8 +9,61 @@
 
 #define TS 4
 
+#define LineLength 5
+
+/**
+ * Exercise 1-24. Write a program to check a C program for rudimentary syntax errors like unmatched
+parentheses, brackets and braces. Don't forget about quotes, both single and double, escape sequences,and comments. (This program is hard if you do it in full generality.)
+思路：
+判断大小括号、引号是否为偶数
+*/
+void check(){
+    
+}
+
+/**
+ * Exercise 1-23. Write a program to remove all comments from a C program. Don't forget to handle
+quoted strings and character constants properly. C comments don't nest.
+*/
+void rmComments(){
+    int c,last,status=OUT;
+    while((c=getchar())!=EOF){
+        
+        if(status==IN){
+            printf("%c",c);
+        }
+
+        if(c=='\\'&&last=='\\'){
+            status=IN;
+        }else if('\n'==status){//发现换行，改变status
+            status=OUT;
+        }else if(last=='/'&&c=='*'){
+            status=IN;
+        }else if(last=='*'&&c=='/'){
+            status=OUT;
+        }
+        last=c;
+    }
+}
+
+/**
+ * Exercise 1-22. Write a program to ``fold'' long input lines into two or more shorter lines after the last
+non-blank character that occurs before the n-th column of input. Make sure your program does
+something intelligent with very long lines, and if there are no blanks or tabs before the specified column.
+*/
+void fold(){
+    int c,sum=0;
+    while((c=getchar())!=EOF){
+        if(sum>=LineLength){
+            sum=0;
+            printf("\n");
+        }
+        printf("%c",c);
+        sum++;
+    }
+}
+
 /**Exercise 1-20. Write a program detab that replaces tabs in the input with the proper number of blanks
-to space to the next tab stop. Assume a fixed set of tab stops, say every n columns. Should n be a
 to space to the next tab stop. Assume a fixed set of tab stops, say every n columns. Should n be a
 variable or a symbolic parameter?**/
 void detab(){
@@ -26,11 +79,12 @@ void detab(){
             while(left>0){
                 printf(" ");
                 left--;
+                index++;
             }
         }else{
             printf("%c",c);
+            index++;
         }
-        index++;
 
         if('\n'==c)
             index=0;
@@ -362,5 +416,6 @@ void main(){
     // pinrtInput();
     // pinrtInput80();
     // pinrtInputRmBlank();
-    detab();
+    // detab();
+    fold();
 }
