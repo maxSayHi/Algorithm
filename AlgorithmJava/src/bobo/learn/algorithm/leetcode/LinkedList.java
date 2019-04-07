@@ -162,4 +162,24 @@ public class LinkedList {
         }
         return head;
     }
+    @Test
+    public void testMedian(){
+        ListNode node = new ListNode(0);
+        node.next=new ListNode(2);
+//        node.next.next=new ListNode(6);
+//        node.next.next.next=new ListNode(8);
+
+        System.out.println(medianOfList(node).val);
+    }
+    //求链表中间节点
+    public ListNode medianOfList(ListNode node){
+        ListNode slow=node;
+        ListNode fast=node;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+
+        return slow;
+    }
 }

@@ -3,6 +3,7 @@ package bobo.learn.algorithm.leetcode;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.LinkedList;
 
 /**
  * Created by max on 16-10-12.
