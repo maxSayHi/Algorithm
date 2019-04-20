@@ -797,4 +797,117 @@ public class LeetCode {
         root.right=temp;
         return root;
     }
+
+
+    /**
+     *
+     * 239. Sliding Window Maximum
+
+     Share
+     Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
+
+     Example:
+
+     Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+     Output: [3,3,5,5,6,7]
+     Explanation:
+
+     Window position                Max
+     ---------------               -----
+     [1  3  -1] -3  5  3  6  7       3
+     1 [3  -1  -3] 5  3  6  7       3
+     1  3 [-1  -3  5] 3  6  7       5
+     1  3  -1 [-3  5  3] 6  7       5
+     1  3  -1  -3 [5  3  6] 7       6
+     1  3  -1  -3  5 [3  6  7]      7
+     Note:
+     You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
+
+     Follow up:
+     Could you solve it in linear time?
+
+     https://blog.csdn.net/jmspan/article/details/51073879  双向队列，代码较长，难理解
+     *
+     */
+    @Test
+    public void testWindow(){
+        int nums[]={1,3,-1,-3,5,3,6,7};
+        int[] ints = maxSlidingWindow(nums, 1);
+        for(int i : ints){
+            System.out.println(i);
+        }
+    }
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int result[]={};
+        if(nums.length<1||k<1){
+            return result;
+        }
+        int n = nums.length - k+1;
+        result=new int[n];
+        PriorityQueue<Integer> queue = new PriorityQueue<Integer>(k,Collections.<Integer>reverseOrder());
+        for(int i=0;i<n;i++){
+            for(int j=0;j<k;j++){
+                queue.add(nums[i+j]);
+            }
+            result[i]=queue.poll();
+            queue.clear();
+        }
+
+        return result;
+    }
+
+    /**
+     *
+     * 32. Longest Valid Parentheses
+     * Hard
+     *
+     * 1679
+     *
+     * 81
+     *
+     * Favorite
+     *
+     * Share
+     * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+     *
+     * Example 1:
+     *
+     * Input: "(()"
+     * Output: 2
+     * Explanation: The longest valid parentheses substring is "()"
+     * Example 2:
+     *
+     * Input: ")()())"
+     * Output: 4
+     * Explanation: The longest valid parentheses substring is "()()"
+     *
+     * leetcode website solution
+     *
+     */
+    @Test
+    public void testLongestValidParentheses(){
+        System.out.println(longestValidParentheses("()))))()((()))"));
+    }
+
+    public int longestValidParentheses(String s) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
+        int max=0;
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if('('==c){
+                stack.push(i);
+            }else {
+                stack.pop();
+                if(stack.isEmpty()){
+                    stack.push(i);
+                }else {
+                    max=Math.max(max,i-stack.peek());
+                }
+            }
+        }
+        return max;
+
+    }
 }

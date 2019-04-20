@@ -2,7 +2,7 @@ package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
 
-public class Array {
+public class ArrayLearn {
 
 
     @Test
