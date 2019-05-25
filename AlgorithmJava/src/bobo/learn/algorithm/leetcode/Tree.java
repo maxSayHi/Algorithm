@@ -128,6 +128,7 @@ public class Tree {
      * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
      *
      * 总结，关键点是把sum逐层下放到根节点
+     * 对于返回值为boolean的递归，学会使用 return  conditionA||conditionB
      *
      *
      */
@@ -138,7 +139,8 @@ public class Tree {
         node.left.left=new TreeNode(3);
         node.right=new TreeNode(2);
 
-        System.out.println(pathSum(node,4));
+//        System.out.println(pathSum(node,4));
+        System.out.println(pathSumTwo(node,0,4));
     }
 
     public boolean hasPathSum(TreeNode root, int sum) {
@@ -156,6 +158,18 @@ public class Tree {
 
         int new_sum=sum-root.val;
         return pathSum(root.left,new_sum)||pathSum(root.right,new_sum);
+    }
+
+    public boolean pathSumTwo(TreeNode root, int sum,int target){
+        if(root==null){
+            return false;
+        }
+
+        if(root.left==null&&root.right==null){
+            return sum+root.val==target;
+        }
+
+        return pathSumTwo(root.left,sum+root.val,target)||pathSumTwo(root.right,sum+root.val,target);
     }
 
 

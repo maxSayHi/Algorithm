@@ -80,13 +80,8 @@ public class InvertTree {
         root.left=root.right;
         root.right=temp;
 
-        if(root.left!=null){
-            invertTree(root.left);
-        }
-
-        if(root.right!=null){
-            invertTree(root.right);
-        }
+        invertTree(root.left);
+        invertTree(root.right);
         return root;
     }
 }

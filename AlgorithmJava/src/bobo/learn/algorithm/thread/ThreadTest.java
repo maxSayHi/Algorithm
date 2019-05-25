@@ -33,12 +33,14 @@ public class ThreadTest {
 //            }
 //        }).start();
 
-        new ThreadTest().testSemaphore();
+//        new ThreadTest().testSemaphore();
+
+        new ThreadTest().runReaderWriter();
     }
 
 
     @Test
-    public void testStartThread(){
+    public void testStartThread() throws ExecutionException, InterruptedException {
         FutureTask<Integer> ft = new FutureTask<>(new Callable<Integer>() {
             @Override
             public Integer call() throws Exception {
@@ -55,11 +57,13 @@ public class ThreadTest {
 //        } catch (ExecutionException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println("done!");
+        System.out.println("done!"+ft.get());
+        ft.cancel(true);
+
     }
 
 
-    Semaphore semaphore = new Semaphore(2,true);
+    Semaphore semaphore = new Semaphore(0,true);
 
 
     public void testSemaphore(){
@@ -67,7 +71,7 @@ public class ThreadTest {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Thread.currentThread().interrupt();
+//                    Thread.currentThread().interrupt();
                     try {
                         runSemaphore();
                     } catch (InterruptedException e) {
@@ -83,5 +87,32 @@ public class ThreadTest {
         System.out.println("running");
         Thread.sleep(1000);
         semaphore.release();
+    }
+
+    public void runReaderWriter(){
+        final ReaderWriter readerWriter = new ReaderWriter();
+        for(int i=0;i<10;i++){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        readerWriter.reader();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    readerWriter.writer();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
