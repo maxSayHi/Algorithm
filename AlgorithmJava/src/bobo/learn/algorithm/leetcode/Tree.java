@@ -226,4 +226,72 @@ public class Tree {
 
     }
 
+
+    /**
+     *
+     *
+     * 563. Binary Tree Tilt
+     * Easy
+     *
+     * 325
+     *
+     * 737
+     *
+     * Favorite
+     *
+     * Share
+     * Given a binary tree, return the tilt of the whole tree.
+     *
+     * The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtree node values. Null node has tilt 0.
+     *
+     * The tilt of the whole tree is defined as the sum of all nodes' tilt.
+     *
+     * Example:
+     * Input:
+     *          1
+     *        /   \
+     *       2     3
+     * Output: 1
+     * Explanation:
+     * Tilt of node 2 : 0
+     * Tilt of node 3 : 0
+     * Tilt of node 1 : |2-3| = 1
+     * Tilt of binary tree : 0 + 0 + 1 = 1
+     * Note:
+     *
+     * The sum of node values in any subtree won't exceed the range of 32-bit integer.
+     * All the tilt values won't exceed the range of 32-bit integer.
+     *
+     *
+     * 学习到了新的解法，return left+right+root.val
+     *
+     */
+
+    @Test
+    public void testfindTild(){
+        TreeNode node = new TreeNode(1);
+        node.left=new TreeNode(2);
+        node.right=new TreeNode(4);
+        node.left.left=new TreeNode(6);
+        System.out.println(findTilt(node));
+
+    }
+
+    int tilt;
+
+    public int findTilt(TreeNode root) {
+        traverse(root);
+        return tilt;
+    }
+
+    public int traverse(TreeNode root){
+        if(root==null)
+            return 0;
+        int left = traverse(root.left);
+        int right = traverse(root.right);
+
+        tilt += Math.abs(left-right);
+        return left+right+root.val;
+    }
+
 }

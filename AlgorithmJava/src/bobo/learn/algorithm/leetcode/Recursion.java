@@ -2,6 +2,8 @@ package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 /**
  * Created by max on 2019/4/6.
  */
@@ -23,7 +25,8 @@ public class Recursion {
     public void testPermutation(){
         int nums[]={1,2,3};
 //        fullPermutation(nums,0,3);
-        getPermutation(5,0);
+        String permutation = getPermutation(3, 3);
+        System.out.println(permutation);
     }
 
 
@@ -64,14 +67,16 @@ public class Recursion {
      * @return
      */
     private int pos=0;
+    private int k=0;
+    private String result="";
     public String getPermutation(int n, int k) {
         int nums[]=new int[n];
         for(int i=1;i<=n;i++){
             nums[i-1]=i;
         }
-
+        this.k=k;
         fullPermutation(nums,0,n);
-        return "";
+        return result;
     }
 
     //全排列
@@ -81,7 +86,14 @@ public class Recursion {
             for(int i:arr)
                 System.out.print(i);
             System.out.println("   "+pos);
+            if(pos==k){
+                StringBuilder sb = new StringBuilder();
+                for(int i:arr)
+                    sb.append(i);
+                result = sb.toString();
+            }
             return;
+
         }
         for(int i=start;i<end;i++){
             swap(arr,i,start);
@@ -94,5 +106,51 @@ public class Recursion {
         int temp = arr[a];
         arr[a]= arr[b];
         arr[b]= temp;
+    }
+
+
+    /**
+     *
+     *
+     * 509. Fibonacci Number
+     * Easy
+     *
+     * 176
+     *
+     * 138
+     *
+     * Favorite
+     *
+     * Share
+     * The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+     *
+     * F(0) = 0,   F(1) = 1
+     * F(N) = F(N - 1) + F(N - 2), for N > 1.
+     * Given N, calculate F(N).
+     *
+     *
+     *
+     * Example 1:
+     *
+     * Input: 2
+     * Output: 1
+     * Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+     * Example 2:
+     *
+     * Input: 3
+     * Output: 2
+     * Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+     * Example 3:
+     *
+     * Input: 4
+     * Output: 3
+     * Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+     *
+     */
+
+    public int fib(int N) {
+        if(N==0) return 0;
+        if(N==1) return 1;
+        return fib(N-1)+fib(N-2);
     }
 }

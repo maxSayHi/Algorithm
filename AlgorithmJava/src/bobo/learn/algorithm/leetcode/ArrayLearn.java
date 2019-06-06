@@ -2,6 +2,11 @@ package bobo.learn.algorithm.leetcode;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
 public class ArrayLearn {
 
 
@@ -33,4 +38,41 @@ public class ArrayLearn {
         return result;
     }
 
+    /**
+     *
+     * 442. Find All Duplicates in an Array
+     * Medium
+     *
+     * 1079
+     *
+     * 114
+     *
+     * Favorite
+     *
+     * Share
+     * Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+     *
+     * Find all the elements that appear twice in this array.
+     *
+     * Could you do it without extra space and in O(n) runtime?
+     *
+     * Example:
+     * Input:
+     * [4,3,2,7,8,2,3,1]
+     *
+     * Output:
+     * [2,3]
+     *
+     */
+
+    public List<Integer> findDuplicates(int[] nums) {
+        HashSet<Integer> set=new HashSet<>();
+        HashSet<Integer> resultset=new HashSet<>();
+        for(Integer i : nums){
+            if(!set.add(i)){
+                resultset.add(i);
+            }
+        }
+        return new ArrayList<>(resultset);
+    }
 }
