@@ -159,4 +159,55 @@ public class Graph {
         }
         return true;
     }
+
+    /**
+     *
+     * 79. Word Search
+     *
+     * Given a 2D board and a word, find if the word exists in the grid.
+     *
+     * The word can be constructed from letters of sequentially adjacent cell, where "adjacent" cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.
+     *
+     * Example:
+     *
+     * board =
+     * [
+     *   ['A','B','C','E'],
+     *   ['S','F','C','S'],
+     *   ['A','D','E','E']
+     * ]
+     *
+     * Given word = "ABCCED", return true.
+     * Given word = "SEE", return true.
+     * Given word = "ABCB", return false.
+     *
+     * 总结：和之前岛屿合并的问题非常像，要注意边界检查，length-1
+     *
+     */
+    public boolean exist(char[][] board, String word) {
+        for(int i=0;i<board.length;i++)
+            for(int j=0;j<board[0].length;j++){
+                if(exist(board,i,j,word,0)){
+                    return true;
+                }
+            }
+        return false;
+    }
+
+    public boolean exist(char[][] board,int i,int j,String word,int index){
+        if(word.length()==index){
+            return true;
+        }
+        if(i<0||i>board.length-1||j<0||j>board[0].length-1||word.charAt(index)!=board[i][j]){
+            return false;
+        }
+        boolean result = false;
+        board[i][j]='*';
+        result = exist(board,i+1,j,word,index+1)||
+                exist(board,i-1,j,word,index+1)||
+                exist(board,i,j+1,word,index+1)||
+                exist(board,i,j-1,word,index+1);
+        board[i][j]=word.charAt(index);
+        return result;
+    }
 }
