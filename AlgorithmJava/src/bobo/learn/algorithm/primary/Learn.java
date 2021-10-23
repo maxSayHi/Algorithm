@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Learn {
 
-    public static String getName(){
+    public static String getName() {
         return "";
     }
 
@@ -21,32 +21,53 @@ public class Learn {
         Learn learn = new Learn();
         learn.learnGeneric();
 
+        Click click = null;
+        try {
+            click = new Click() {
+                @Override
+                public void onclick() {
+//                    try {
+                        System.out.println(1 / 0);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                }
+            };
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+        click.onclick();
+
     }
 
-    public void learnGeneric(){
-        List<? extends Father> list= new ArrayList<>();
+    public void learnGeneric() {
+        List<? extends Father> list = new ArrayList<>();
 //        list.add(new Son());
 //        list.add(new Father());
 //        list.add(null);
 
 //        Father father = list.get(0);
 
-        List<? super Son> listS=new ArrayList<>();
+        List<? super Son> listS = new ArrayList<>();
 //        listS.add(new Father());
         listS.add(new Son());
 
-        Father f=new Son();
-        System.out.println(((Son)f).name);
+        Father f = new Son();
+        System.out.println(((Son) f).name);
     }
 
 
-
-    class Father extends Learn{
-        public String name="爸爸";
+    class Father extends Learn {
+        public String name = "爸爸";
 
     }
-    class Son extends Father{
-        public String name="儿子";
 
+    class Son extends Father {
+        public String name = "儿子";
+
+    }
+
+    interface Click {
+        void onclick();
     }
 }

@@ -69,8 +69,9 @@ public class TestDate {
 
 //        ArrayList<String> arr = new ArrayList<>();
 //        arr.add("周煦明");
-//        arr.add("田雨露");
+////        arr.add("田雨露");
 //        arr.add("李婧馨");
+////        arr.add("韩博");
 //        int position = ThreadLocalRandom.current().nextInt(0, arr.size());
 //        System.out.println("下一位轮值人：" + arr.get(position));
 
@@ -120,9 +121,18 @@ public class TestDate {
 //        bonus.add("wiki券(主题池里的主题选一个，写一篇wiki)");
 //        position = ThreadLocalRandom.current().nextInt(0, arr.size());
 //        System.out.println("中奖选手：" + arr.get(position));
-
-
-
+        sayHi();
     }
 
+
+    public static void sayHi() {
+        try {
+            System.out.println("hello darling!");
+            return;
+        } catch (Exception e) {
+
+        } finally {
+            System.out.println("Finally");
+        }
+    }
 }

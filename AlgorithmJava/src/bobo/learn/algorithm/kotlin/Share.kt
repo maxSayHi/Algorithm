@@ -8,7 +8,6 @@ class Share
  * 分享会
  */
 fun main() {
-
     //从所有安卓小伙伴中抽取一人
     var arr = ArrayList<String>()
     arr.add("周煦明")

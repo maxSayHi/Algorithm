@@ -1,0 +1,4 @@
+/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/CMakeFiles/foo.dir
+/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/CMakeFiles/AlgorithmC.dir

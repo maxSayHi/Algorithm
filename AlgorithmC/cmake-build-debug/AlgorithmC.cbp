@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="AlgorithmC"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="foo">
+				<Option output="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/foo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 foo"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="foo/fast">
+				<Option output="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/foo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 foo/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AlgorithmC">
+				<Option output="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/AlgorithmC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 AlgorithmC"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AlgorithmC/fast">
+				<Option output="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/AlgorithmC" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 AlgorithmC/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/edz/projects/Algorithm/AlgorithmC/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/991.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/chapter2.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/chapter5.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/chapter6.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/donut.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/find.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/hello.c">
+			<Option target="foo"/>
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/pointer.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/str.c">
+			<Option target="AlgorithmC"/>
+		</Unit>
+		<Unit filename="/Users/edz/projects/Algorithm/AlgorithmC/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

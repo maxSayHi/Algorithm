@@ -399,7 +399,7 @@ void print(){
 the program, to see what error messages you get.
  * */
 void main(){
-    // printf("hello world！\n");
+    printf("hello world！\n");
     // print();
 
     // tempConvertion();
@@ -417,5 +417,5 @@ void main(){
     // pinrtInput80();
     // pinrtInputRmBlank();
     // detab();
-    fold();
+    // fold();
 }
