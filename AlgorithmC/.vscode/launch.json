@@ -23,7 +23,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/hello.out",
+            "program": "${workspaceFolder}/991_substr_count",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -1,6 +1,7 @@
 package bobo.learn.algorithm.thread;
 
 import org.junit.Test;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -57,17 +58,17 @@ public class ThreadTest {
 //        } catch (ExecutionException e) {
 //            e.printStackTrace();
 //        }
-        System.out.println("done!"+ft.get());
+        System.out.println("done!" + ft.get());
         ft.cancel(true);
 
     }
 
 
-    Semaphore semaphore = new Semaphore(0,true);
+    Semaphore semaphore = new Semaphore(0, true);
 
 
-    public void testSemaphore(){
-        for(int i=0;i<10;i++){
+    public void testSemaphore() {
+        for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -89,9 +90,9 @@ public class ThreadTest {
         semaphore.release();
     }
 
-    public void runReaderWriter(){
+    public void runReaderWriter() {
         final ReaderWriter readerWriter = new ReaderWriter();
-        for(int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {

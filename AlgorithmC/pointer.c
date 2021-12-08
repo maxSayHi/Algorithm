@@ -8,6 +8,7 @@ int main(int argc, char const *argv[])
   printf("%d\n",a);
   p = &a;
   *p=20;
+  *p= *p+1;
   printf("%d\n",a);
   
   char *str = "我很开心，我很快乐！我喜欢黄铅笔！!!";
@@ -15,4 +16,3 @@ int main(int argc, char const *argv[])
 
   return 0;
 }
-

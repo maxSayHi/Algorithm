@@ -7,3 +7,4 @@ build
 /.classpath
 *.iml
 /*.db
+/cmake-build-debug/

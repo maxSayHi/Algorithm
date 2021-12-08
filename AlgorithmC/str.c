@@ -45,6 +45,7 @@ void testintanagrams()
   gets(str2);
   flag = intanagrams(str1, str2);
 }
+
 intanagrams(char *str1, char *str2)
 {
   int len1 = strlen(str1);
@@ -92,7 +93,7 @@ void inorder(BTREE T)
       BTREE tmp = T->lchild;
       T->lchild = T->rchild;
       T->rchild = tmp;
-      return 1;
+      return;
     }
     inorder(T->rchild);
   }
